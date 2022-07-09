@@ -198,7 +198,7 @@ case "${PACKAGE_TYPE}" in
     ;;
     extras)
         MOUNT_NAME='KiCad Extras'
-        DMG_SIZE=9.5G
+        DMG_SIZE="-size 9.5g"
         if [ -z "$RELEASE_NAME" ]; then
             DMG_NAME=kicad-extras-"${NOW}".dmg
         else
