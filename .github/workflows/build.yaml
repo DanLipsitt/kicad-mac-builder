@@ -1,0 +1,17 @@
+name: Build OSX
+on: [push]
+env:
+  HOMEBREW_NO_ANALYTICS: 1
+jobs:
+  build:
+    strategy:
+      matrix:
+        target:
+          - package-kicad-nightly
+          - package-extras
+    runs-on: macos-11
+    steps:
+      - run: brew install openssh
+      - run: brew install glew cairo doxygen gettext wget bison libtool autoconf automake cmake swig opencascade boost glm openssl
+      - run: pipx install dyldstyle
+      - run: build.py --target ${{ matrix.target }}
