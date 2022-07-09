@@ -18,3 +18,7 @@ jobs:
       - run: pipx install git+https://gitlab.com/adamwwolf/dyldstyle.git
       - uses: actions/checkout@v3
       - run: ./build.py --target ${{ matrix.target }} --release --macos-min-version 10.14
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.target }}-dmg
+          path: build/dmg/*
