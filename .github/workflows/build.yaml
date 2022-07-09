@@ -16,4 +16,5 @@ jobs:
       - run: brew install openssh
       - run: brew install glew cairo doxygen gettext wget bison libtool autoconf automake cmake swig opencascade boost glm openssl
       - run: pipx install git+https://gitlab.com/adamwwolf/dyldstyle.git
+      - uses: actions/checkout@v3
       - run: ./build.py --target ${{ matrix.target }}
