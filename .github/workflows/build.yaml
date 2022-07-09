@@ -2,6 +2,7 @@ name: Build OSX
 on: [push]
 env:
   HOMEBREW_NO_ANALYTICS: 1
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
 jobs:
   build:
     strategy:
@@ -13,5 +14,5 @@ jobs:
     steps:
       - run: brew install openssh
       - run: brew install glew cairo doxygen gettext wget bison libtool autoconf automake cmake swig opencascade boost glm openssl
-      - run: pipx install dyldstyle
+      - run: pipx install git+https://gitlab.com/adamwwolf/dyldstyle.git
       - run: build.py --target ${{ matrix.target }}
